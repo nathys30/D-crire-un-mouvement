@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Diapo 3 – Référentiel</title>
+<link rel="stylesheet" href="assets/styles.css"/>
+<script>
+
+function nav(to){ location.href = to; }
+
+function checkQ(){
+  const a = document.querySelector('input[name="q1"]:checked');
+  const b = document.querySelector('input[name="q2"]:checked');
+  let score = 0;
+  if(a && a.value==='non') score++;
+  if(b && b.value==='oui') score++;
+  const res = document.getElementById('qres');
+  res.innerHTML = "Score : " + score + "/2 – " + (score===2 ? "✅ Parfait !" : "💡 Relis la définition du référentiel.");
+}
+</script>
+</head>
+<body>
+<div class="container">
+  <a class="small" href="diapo2.html">← Précédent</a>
+  <h1>Tout dépend du référentiel !</h1>
+  <div class="card">
+    <p>Le <strong>référentiel</strong> est le point de vue (système d'observation) auquel on se place pour décrire le mouvement.</p>
+    <div class="grid grid-2">
+      <div>
+        <h2>Train en mouvement</h2>
+        <p><strong>Situation :</strong> Un passager dans le train et un observateur sur le quai.</p>
+        <ul>
+          <li>Par rapport au <em>train</em> : le passager est immobile.</li>
+          <li>Par rapport à la <em>Terre</em> : le train est en mouvement.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h2>QCM</h2>
+        <p>Le passager est-il en mouvement par rapport au train ?</p>
+        <label><input type="radio" name="q1" value="oui"> Oui</label>
+        <label><input type="radio" name="q1" value="non"> Non</label>
+        <div class="hr"></div>
+        <p>Le train est-il en mouvement par rapport à la Terre ?</p>
+        <label><input type="radio" name="q2" value="oui"> Oui</label>
+        <label><input type="radio" name="q2" value="non"> Non</label>
+        <div class="btns">
+          <a class="btn" href="#" onclick="checkQ()">Vérifier</a>
+          <a class="btn secondary" href="diapo4.html">Suivant → Quiz</a>
+        </div>
+        <div id="qres" class="note"></div>
+      </div>
+    </div>
+  </div>
+  
+<div class='footer'>Cours de Mme SARROCA – Collège Mont Duplan</div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Diapo 2 – Qu'est-ce qu'un mouvement ?</title>
+<link rel="stylesheet" href="assets/styles.css"/>
+<script>
+
+function nav(to){ location.href = to; }
+
+let answers = {"rectiligne": null, "curviligne": null, "circulaire": null};
+function allowDrop(ev){ev.preventDefault();}
+function drag(ev){ev.dataTransfer.setData("text", ev.target.id);}
+function drop(ev, key){ev.preventDefault(); const data = ev.dataTransfer.getData("text"); const el = document.getElementById(data);
+  ev.target.innerHTML = ""; ev.target.appendChild(el); answers[key] = data; }
+function checkDD(){
+  const good = (answers.rectiligne==='token_car' && answers.curviligne==='token_ball' && answers.circulaire==='token_moon');
+  const out = document.getElementById('dd_result');
+  out.innerHTML = good ? "✅ Bravo, tu as bien reconnu la trajectoire !" : "❌ Regarde la forme de la trajectoire...";
+  out.className = good ? "good" : "bad";
+}
+</script>
+</head>
+<body>
+<div class="container">
+  <a class="small" href="index.html">← Accueil</a>
+  <h1>Qu'est-ce qu'un mouvement ?</h1>
+  <div class="card">
+    <p>Un <strong>mouvement</strong>, c’est le changement de position d’un objet au cours du temps <strong>par rapport à un référentiel</strong>.</p>
+    <p><em>Exemples :</em> voiture sur route (rectiligne), balle de tennis (curviligne), Lune autour de la Terre (circulaire).</p>
+    <div class="grid grid-2">
+      <div>
+        <h2>Associe le mouvement à son type</h2>
+        <div class="drag-area">
+          <div id="token_car" class="token" draggable="true" ondragstart="drag(event)">🚗 Voiture</div>
+          <div id="token_ball" class="token" draggable="true" ondragstart="drag(event)">🎾 Balle</div>
+          <div id="token_moon" class="token" draggable="true" ondragstart="drag(event)">🌕 Lune</div>
+        </div>
+        <div class="grid grid-2" style="margin-top:10px">
+          <div class="dropzone" ondrop="drop(event,'rectiligne')" ondragover="allowDrop(event)">Rectiligne</div>
+          <div class="dropzone" ondrop="drop(event,'circulaire')" ondragover="allowDrop(event)">Circulaire</div>
+          <div class="dropzone" ondrop="drop(event,'curviligne')" ondragover="allowDrop(event)">Curviligne</div>
+        </div>
+        <div class="btns">
+          <a class="btn" href="#" onclick="checkDD()">Vérifier</a>
+          <a class="btn secondary" href="diapo3.html">Suivant → Référentiel</a>
+        </div>
+        <div id="dd_result" class="note" style="margin-top:8px"></div>
+      </div>
+      <div class="card">
+        <h2>Repères visuels</h2>
+        <div class="figure"><span class="dot"></span><div>Rectiligne : ligne droite (autoroute).</div></div>
+        <div class="figure"><span class="dot"></span><div>Circulaire : orbite régulière (satellite).</div></div>
+        <div class="figure"><span class="dot"></span><div>Curviligne : trajectoire courbe (projectile).</div></div>
+      </div>
+    </div>
+  </div>
+  
+<div class='footer'>Cours de Mme SARROCA – Collège Mont Duplan</div>
+
+</div>
+</body>
+</html>

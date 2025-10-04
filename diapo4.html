@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Diapo 4 – Teste tes connaissances</title>
+<link rel="stylesheet" href="assets/styles.css"/>
+<script>
+
+function nav(to){ location.href = to; }
+
+function submitQuiz(){
+  let score=0;
+  if(document.querySelector('input[name="q1"]:checked')?.value==='mvt') score++;
+  if(document.querySelector('input[name="q2"]:checked')?.value==='rect') score++;
+  if(document.querySelector('input[name="q3"]:checked')?.value==='curv') score++;
+  if(document.querySelector('input[name="q4"]:checked')?.value==='ref') score++;
+  const out=document.getElementById('result');
+  out.innerHTML="🎉 Score : "+score+"/4";
+  out.className = (score>=3) ? "good" : "bad";
+}
+</script>
+</head>
+<body>
+<div class="container">
+  <a class="small" href="diapo3.html">← Précédent</a>
+  <h1>Teste tes connaissances</h1>
+  <div class="card">
+    <ol>
+      <li>Le changement de position d’un objet au cours du temps par rapport à un repère s’appelle :<br/>
+        <label><input type="radio" name="q1" value="mvt"> le mouvement</label><br/>
+        <label><input type="radio" name="q1" value="vit"> la vitesse</label>
+      </li>
+      <div class="hr"></div>
+      <li>La trajectoire d’une voiture sur une autoroute droite est :<br/>
+        <label><input type="radio" name="q2" value="rect"> rectiligne</label><br/>
+        <label><input type="radio" name="q2" value="circ"> circulaire</label>
+      </li>
+      <div class="hr"></div>
+      <li>La trajectoire d’un ballon lancé est :<br/>
+        <label><input type="radio" name="q3" value="curv"> curviligne</label><br/>
+        <label><input type="radio" name="q3" value="rect"> rectiligne</label>
+      </li>
+      <div class="hr"></div>
+      <li>Pour décrire un mouvement, on doit toujours préciser :<br/>
+        <label><input type="radio" name="q4" value="ref"> le référentiel</label><br/>
+        <label><input type="radio" name="q4" value="vit"> seulement la vitesse</label>
+      </li>
+    </ol>
+    <div class="btns">
+      <a class="btn" href="#" onclick="submitQuiz()">Valider</a>
+      <a class="btn secondary" href="diapo5.html">Suite → Synthèse</a>
+    </div>
+    <div id="result" class="note"></div>
+  </div>
+  
+<div class='footer'>Cours de Mme SARROCA – Collège Mont Duplan</div>
+
+</div>
+</body>
+</html>
